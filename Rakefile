@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rails-reverse-proxy"
   gem.homepage = "http://github.com/axsuul/rails-reverse-proxy"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Reverse proxy for Ruby on Rails}
+  gem.description = %Q{Reverse proxy for Ruby on Rails}
   gem.email = "hello@james.hu"
   gem.authors = ["James Hu"]
   # dependencies defined in Gemfile
