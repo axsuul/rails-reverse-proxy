@@ -1,5 +1,6 @@
 require 'rack'
 require 'rack-proxy'
+require 'cookiejar'
 
 module ReverseProxy
   class Client
