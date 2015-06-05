@@ -39,6 +39,7 @@ GEM
     addressable (2.3.8)
     arel (6.0.0)
     builder (3.2.2)
+    cookiejar (0.3.2)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     docile (1.1.5)
@@ -148,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   addressable
   bundler (~> 1.0)
+  cookiejar (~> 0.3.2)
   jeweler (~> 2.0.1)
   rack
   rack-proxy
