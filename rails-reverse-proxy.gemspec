@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["James Hu"]
   s.date = "2015-06-05"
-  s.description = "Reverse proxy for Ruby on Rails"
+  s.description = "TODO: longer description of your gem"
   s.email = "hello@james.hu"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -26,13 +26,14 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/reverse-proxy.rb",
     "lib/reverse-proxy/client.rb",
-    "lib/reverse-proxy/controller.rb"
+    "lib/reverse-proxy/controller.rb",
+    "rails-reverse-proxy.gemspec"
   ]
   s.homepage = "http://github.com/axsuul/rails-reverse-proxy"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.14"
-  s.summary = "Reverse proxy for Ruby on Rails"
+  s.summary = "TODO: one-line summary of your gem"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
