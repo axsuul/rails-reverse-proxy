@@ -64,6 +64,12 @@ Sorry if these instructions are sparse. Feel free to reach out or read the sourc
 
 All pull requests will become first class citizens.
 
+## Thanks
+
+Special thanks to our contributors!
+
+- [miyukki](https://github.com/miyukki)
+
 ## Copyright
 
 Copyright (c) 2015 James Hu. See LICENSE.txt for
