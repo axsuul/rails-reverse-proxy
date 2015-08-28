@@ -4,7 +4,6 @@ gem 'rails'
 gem 'rack'
 gem 'rack-proxy'
 gem 'addressable'
-gem 'cookiejar', '~> 0.3.2'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

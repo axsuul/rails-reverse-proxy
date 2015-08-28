@@ -1,6 +1,5 @@
 require 'rack'
 require 'rack-proxy'
-require 'cookiejar'
 
 module ReverseProxy
   class Client
@@ -92,11 +91,8 @@ module ReverseProxy
         set_cookies_hash = {}
 
         set_cookie_headers.each do |set_cookie_header|
-          set_cookie_hash = CookieJar::CookieValidation.parse_set_cookie(set_cookie_header)
-          set_cookie_hash[:value] = CGI.unescape(set_cookie_hash[:value])
-
-          name = set_cookie_hash.delete(:name)
-
+          set_cookie_hash = parse_cookie(set_cookie_header)
+          name = set_cookie_hash[:name]
           set_cookies_hash[name] = set_cookie_hash
         end
 
@@ -139,6 +135,41 @@ module ReverseProxy
 
     def reconstruct_header_name(name)
       name.sub(/^HTTP_/, "").gsub("_", "-")
+    end
+
+    COOKIE_PARAM_PATTERN = /\A([^(),\/<>@;:\\\"\[\]?={}\s]+)(?:=([^;]*))?\Z/
+    COOKIE_SPLIT_PATTERN = /;\s*/
+
+    def parse_cookie(cookie_str)
+      params = cookie_str.split(COOKIE_SPLIT_PATTERN)
+      info = params.shift.match(COOKIE_PARAM_PATTERN)
+      return {} unless info
+
+      cookie = {
+        name: info[1],
+        value: CGI.unescape(info[2]),
+      }
+
+      params.each do |param|
+        result = param.match(COOKIE_PARAM_PATTERN)
+        next unless result
+
+        key = result[1].downcase.to_sym
+        value = result[2]
+        case key
+        when :expires
+          begin
+            cookie[:expires] = Time.parse(value)
+          rescue ArgumentError
+          end
+        when *[:httponly, :secure]
+          cookie[key] = true
+        else
+          cookie[key] = value
+        end
+      end
+
+      cookie
     end
   end
 end
