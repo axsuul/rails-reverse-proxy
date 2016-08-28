@@ -72,6 +72,6 @@ Special thanks to our contributors!
 
 ## Copyright
 
-Copyright (c) 2015 James Hu. See LICENSE.txt for
+Copyright (c) 2016 James Hu. See LICENSE.txt for
 further details.
 
