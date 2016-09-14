@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module ReverseProxy
   module Controller
     def reverse_proxy(proxy_url, options = {})
