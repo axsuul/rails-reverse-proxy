@@ -69,6 +69,7 @@ All pull requests will become first class citizens.
 Special thanks to our contributors!
 
 - [miyukki](https://github.com/miyukki)
+- [bapirex](https://github.com/bapirex)
 
 ## Copyright
 
