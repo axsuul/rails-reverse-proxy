@@ -1,5 +1,6 @@
 require 'rack'
 require 'rack-proxy'
+require 'addressable/uri'
 
 module ReverseProxy
   class Client
