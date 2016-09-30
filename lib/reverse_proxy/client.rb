@@ -1,5 +1,6 @@
 require 'rack'
 require 'rack-proxy'
+require 'addressable/uri'
 
 module ReverseProxy
   class Client
@@ -45,7 +46,7 @@ module ReverseProxy
       source_request = Rack::Request.new(env)
 
       # We can pass in a custom path
-      uri = URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
+      uri = Addressable::URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
 
       # Initialize request
       target_request = Net::HTTP.const_get(source_request.request_method.capitalize).new(uri.request_uri)
