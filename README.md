@@ -58,7 +58,13 @@ You can also pass options into `reverse_proxy`
 reverse_proxy "http://localhost:8000", path: "custom-path", headers: { 'X-Foo' => "Bar" }
 ```
 
-Sorry if these instructions are sparse. Feel free to reach out or read the source!
+Use this method to determine what version you're running
+
+```ruby
+ReverseProxy.version
+```
+
+Feel free to open an issue!
 
 ## Contributing
 
