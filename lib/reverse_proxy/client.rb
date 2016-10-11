@@ -79,7 +79,7 @@ module ReverseProxy
       target_request['Accept-Encoding'] = nil
 
       # Make the request
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: (uri.scheme == "https")) do |http|
+      Net::HTTP.start(uri.hostname, uri.port, use_ssl: (uri.scheme == "https"), :verify_mode: => OpenSSL::SSL::VERIFY_NONE) do |http|
         target_response = http.request(target_request)
       end
 
