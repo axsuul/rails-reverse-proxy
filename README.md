@@ -58,6 +58,12 @@ You can also pass options into `reverse_proxy`
 reverse_proxy "http://localhost:8000", path: "custom-path", headers: { 'X-Foo' => "Bar" }
 ```
 
+If you'd like to bypass SSL verification
+
+```ruby
+reverse_proxy "http://localhost:8000", verify_ssl: false
+```
+
 Use this method to determine what version you're running
 
 ```ruby
