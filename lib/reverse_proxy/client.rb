@@ -37,10 +37,11 @@ module ReverseProxy
 
     def request(env, options = {}, &block)
       options.reverse_merge!(
-        headers: {},
-        path: nil,
-        username: nil,
-        password: nil
+        headers:    {},
+        path:       nil,
+        username:   nil,
+        password:   nil,
+        verify_ssl: true
       )
 
       source_request = Rack::Request.new(env)
@@ -78,8 +79,12 @@ module ReverseProxy
       # within Varnish (503)
       target_request['Accept-Encoding'] = nil
 
+      http_options = {}
+      http_options[:use_ssl] = (uri.scheme == "https")
+      http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE if options[:verify_ssl]
+
       # Make the request
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: (uri.scheme == "https"), :verify_mode: => OpenSSL::SSL::VERIFY_NONE) do |http|
+      Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
         target_response = http.request(target_request)
       end
 
