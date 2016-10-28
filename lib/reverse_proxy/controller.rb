@@ -49,14 +49,14 @@ module ReverseProxy
           if content_type and content_type.match /image/
             send_data body, content_type: content_type, disposition: "inline", status: code
           else
-            render text: body, content_type: content_type, status: code
+            render body: body, content_type: content_type, status: code
           end
         end
 
         yield(config) if block_given?
       end
 
-      client.request(env, options)
+      client.request(request.env, options)
     end
   end
 end
