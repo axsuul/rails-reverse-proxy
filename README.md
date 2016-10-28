@@ -82,6 +82,7 @@ Special thanks to our contributors!
 
 - [miyukki](https://github.com/miyukki)
 - [bapirex](https://github.com/bapirex)
+- [marcosbeirigo](https://github.com/marcosbeirigo)
 
 ## Copyright
 
