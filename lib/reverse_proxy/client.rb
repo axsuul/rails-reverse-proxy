@@ -38,6 +38,7 @@ module ReverseProxy
     def request(env, options = {}, &block)
       options.reverse_merge!(
         headers:    {},
+        http_options: {},
         path:       nil,
         username:   nil,
         password:   nil,
@@ -82,6 +83,7 @@ module ReverseProxy
       http_options = {}
       http_options[:use_ssl] = (uri.scheme == "https")
       http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE if options[:verify_ssl]
+      http_options.merge!(options[:http_options]) if options[:http_options]
 
       # Make the request
       Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
