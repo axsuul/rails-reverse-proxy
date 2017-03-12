@@ -38,7 +38,7 @@ module ReverseProxy
     def request(env, options = {}, &block)
       options.reverse_merge!(
         headers:    {},
-        http_options: {},
+        http:       {},
         path:       nil,
         username:   nil,
         password:   nil,
