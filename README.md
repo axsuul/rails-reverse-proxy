@@ -64,10 +64,10 @@ If you'd like to bypass SSL verification
 reverse_proxy "http://localhost:8000", verify_ssl: false
 ```
 
-If you'd like to more customize your [HTTP optional hash](https://ruby-doc.org/stdlib-2.4.0/libdoc/net/http/rdoc/Net/HTTP.html#start-method),
+If you'd like to customize the options passed into the [HTTP session](https://ruby-doc.org/stdlib-2.4.0/libdoc/net/http/rdoc/Net/HTTP.html#start-method)
 
 ```ruby
-reverse_proxy "http://localhost:8000", http_options: {read_timeout: 20, open_timeout: 100}
+reverse_proxy "http://localhost:8000", http: { read_timeout: 20, open_timeout: 100 }
 ```
 
 Use this method to determine what version you're running
