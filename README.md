@@ -93,5 +93,5 @@ Special thanks to our contributors!
 
 ## Copyright
 
-Copyright (c) 2016 James Hu. See [LICENSE](LICENSE) for
+Copyright (c) 2016-2017 James Hu. See [LICENSE](LICENSE) for
 further details.
