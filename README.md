@@ -34,6 +34,7 @@ class WordpressController < ApplicationController
 
       # There's also other callbacks:
       # - on_set_cookies
+      # - on_connect
       # - on_response
       # - on_set_cookies
       # - on_success
