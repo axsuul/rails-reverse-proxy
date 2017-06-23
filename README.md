@@ -91,6 +91,7 @@ Special thanks to our contributors!
 - [bapirex](https://github.com/bapirex)
 - [marcosbeirigo](https://github.com/marcosbeirigo)
 - [avinashkoulavkar](https://github.com/avinashkoulavkar)
+- [jcs](https://github.com/jcs)
 
 ## Copyright
 
