@@ -83,7 +83,7 @@ module ReverseProxy
 
       http_options = {}
       http_options[:use_ssl] = (uri.scheme == "https")
-      http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE if options[:verify_ssl]
+      http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE unless options[:verify_ssl]
       http_options.merge!(options[:http]) if options[:http]
 
       # Make the request
