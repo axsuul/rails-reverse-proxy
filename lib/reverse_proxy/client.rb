@@ -57,6 +57,9 @@ module ReverseProxy
       # Setup headers
       target_request_headers = extract_http_request_headers(source_request.env).merge(options[:headers])
 
+      # Support SNI
+      target_request_headers['HOST'] ||= uri.host
+
       target_request.initialize_http_header(target_request_headers)
 
       # Basic auth
