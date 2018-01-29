@@ -51,13 +51,11 @@ module ReverseProxy
       # We can pass in a custom path
       uri = Addressable::URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
 
-      # Initialize request
-      target_request = Net::HTTP.const_get(source_request.request_method.capitalize).new(uri.request_uri)
-
-      # Setup headers
+      # Define headers
       target_request_headers = extract_http_request_headers(source_request.env).merge(options[:headers])
 
-      target_request.initialize_http_header(target_request_headers)
+      # Initialize request
+      target_request = Net::HTTP.const_get(source_request.request_method.capitalize).new(uri.request_uri, target_request_headers)
 
       # Basic auth
       target_request.basic_auth(options[:username], options[:password]) if options[:username] and options[:password]
