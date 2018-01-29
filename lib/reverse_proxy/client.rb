@@ -38,12 +38,13 @@ module ReverseProxy
 
     def request(env, options = {}, &block)
       options.reverse_merge!(
-        headers:    {},
-        http:       {},
-        path:       nil,
-        username:   nil,
-        password:   nil,
-        verify_ssl: true
+        headers:     {},
+        http:        {},
+        path:        nil,
+        username:    nil,
+        password:    nil,
+        verify_ssl:  true,
+        compression: :disabled
       )
 
       source_request = Rack::Request.new(env)
@@ -73,11 +74,14 @@ module ReverseProxy
       # Hold the response here
       target_response = nil
 
-      # Don't encode response/support compression which was
-      # causing content length not match the actual content
-      # length of the response which ended up causing issues
-      # within Varnish (503)
-      target_request['Accept-Encoding'] = nil
+      case options[:compression]
+      when :passthrough
+        # Pass along the "Accept-Encoding" header from the source request as-is,
+        # so we don't need to change anything
+      when :disabled, false, nil
+        # Remove the "Accept-Encoding" header if compression is disabled
+        target_request['Accept-Encoding'] = nil
+      end
 
       http_options = {}
       http_options[:use_ssl] = (uri.scheme == "https")
