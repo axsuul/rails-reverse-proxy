@@ -1,10 +1,12 @@
 # rails-reverse-proxy
 
-Gives you the ability to reverse proxy within Rails.
+A reverse proxy for Ruby on Rails.
+
+*A reverse proxy accepts a request from a client, forwards it to a server that can fulfill it, and returns the server's response to the client*
 
 ## Installation
 
-You know the drill. In your Gemfile, have the line
+You know the drill. In your Gemfile
 
 ```ruby
 gem 'rails-reverse-proxy'
@@ -18,7 +20,9 @@ $ bundle
 
 ## Usage
 
-An example usage of this gem is hosting a WordPress site on a path within your Rails application, such as `/blog`. To do this, you'll need something like
+A use case for this gem is serving WordPress on a path within your Rails application, such as `/blog`. 
+
+To do this, your controller might look like this
 
 ```ruby
 class WordpressController < ApplicationController
@@ -65,13 +69,13 @@ If you'd like to bypass SSL verification
 reverse_proxy "http://localhost:8000", verify_ssl: false
 ```
 
-If you'd like to customize the options passed into the [HTTP session](https://ruby-doc.org/stdlib-2.4.0/libdoc/net/http/rdoc/Net/HTTP.html#start-method)
+If you'd like to customize options passed into the underlying [`Net:HTTP`](https://ruby-doc.org/stdlib-2.4.0/libdoc/net/http/rdoc/Net/HTTP.html#start-method) object
 
 ```ruby
 reverse_proxy "http://localhost:8000", http: { read_timeout: 20, open_timeout: 100 }
 ```
 
-Use this method to determine what version you're running
+Determine what version you're using
 
 ```ruby
 ReverseProxy.version
@@ -83,9 +87,9 @@ Feel free to open an issue!
 
 All pull requests will become first class citizens.
 
-## Thanks
+## Contributors
 
-Special thanks to our contributors!
+Special thanks to our contributors! 
 
 - [miyukki](https://github.com/miyukki)
 - [bapirex](https://github.com/bapirex)
@@ -95,5 +99,5 @@ Special thanks to our contributors!
 
 ## Copyright
 
-Copyright (c) 2016-2017 James Hu. See [LICENSE](LICENSE) for
+Copyright (c) 2016-2018 James Hu. See [LICENSE](LICENSE) for
 further details.
