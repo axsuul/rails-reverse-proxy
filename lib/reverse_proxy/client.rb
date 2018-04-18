@@ -131,7 +131,7 @@ module ReverseProxy
 
     def extract_http_request_headers(env)
       headers = env.reject do |k, v|
-        !(/^HTTP_[A-Z_]+$/ === k) || v.nil?
+        !(/^HTTP_[A-Z_]+$/ === k) || k == "HTTP_VERSION" || v.nil?
       end.map do |k, v|
         [reconstruct_header_name(k), v]
       end.inject(Rack::Utils::HeaderHash.new) do |hash, k_v|
