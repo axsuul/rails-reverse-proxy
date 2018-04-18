@@ -96,6 +96,7 @@ Special thanks to our contributors!
 - [marcosbeirigo](https://github.com/marcosbeirigo)
 - [avinashkoulavkar](https://github.com/avinashkoulavkar)
 - [jcs](https://github.com/jcs)
+- [aardvarkk](https://github.com/aardvarkk)
 
 ## Copyright
 
