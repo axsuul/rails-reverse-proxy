@@ -65,14 +65,6 @@ If you'd like to bypass SSL verification
 reverse_proxy "http://localhost:8000", verify_ssl: false
 ```
 
-If you'd like to allow the proxy to request compressed resources by forwarding the `Accept-Encoding` header
-
-```ruby
-reverse_proxy "http://localhost:8000", compression: :passthrough
-# Note that your controller's response will only be compressed
-# if the original response from localhost:8000 is compressed!
-```
-
 If you'd like to customize the options passed into the [HTTP session](https://ruby-doc.org/stdlib-2.4.0/libdoc/net/http/rdoc/Net/HTTP.html#start-method)
 
 ```ruby

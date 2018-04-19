@@ -38,13 +38,13 @@ module ReverseProxy
 
     def request(env, options = {}, &block)
       options.reverse_merge!(
-        headers:     {},
-        http:        {},
-        path:        nil,
-        username:    nil,
-        password:    nil,
-        verify_ssl:  true,
-        compression: :disabled
+        headers:               {},
+        http:                  {},
+        path:                  nil,
+        username:              nil,
+        password:              nil,
+        verify_ssl:            true,
+        reset_accept_encoding: false
       )
 
       source_request = Rack::Request.new(env)
@@ -74,12 +74,9 @@ module ReverseProxy
       # Hold the response here
       target_response = nil
 
-      case options[:compression]
-      when :passthrough
-        # Pass along the "Accept-Encoding" header from the source request as-is,
-        # so we don't need to change anything
-      when :disabled, false, nil
-        # Remove the "Accept-Encoding" header if compression is disabled
+      if options[:reset_accept_encoding]
+        # Clear the "Accept-Encoding" header (which will
+        # disable compression or other server-side encodings)
         target_request['Accept-Encoding'] = nil
       end
 
