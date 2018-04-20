@@ -11,6 +11,7 @@ doc
 
 # bundler
 .bundle
+vendor/bundle
 
 # jeweler generated
 pkg
