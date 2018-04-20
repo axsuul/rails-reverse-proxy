@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["James Hu".freeze]
-  s.date = "2018-04-18"
+  s.date = "2018-04-20"
   s.description = "Reverse proxy for Ruby on Rails".freeze
   s.email = "hello@james.hu".freeze
   s.extra_rdoc_files = [
