@@ -40,6 +40,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.0)
     builder (3.2.3)
+    crass (1.0.5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     docile (1.1.5)
@@ -72,7 +73,8 @@ GEM
       semver
     json (1.8.6)
     jwt (1.5.6)
-    loofah (2.0.2)
+    loofah (2.3.1)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
