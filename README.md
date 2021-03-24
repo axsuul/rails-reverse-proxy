@@ -91,14 +91,10 @@ All pull requests will become first class citizens.
 
 Special thanks to our contributors! 
 
+- [mediafinger](https://github.com/mediafinger)
 - [miyukki](https://github.com/miyukki)
 - [bapirex](https://github.com/bapirex)
 - [marcosbeirigo](https://github.com/marcosbeirigo)
 - [avinashkoulavkar](https://github.com/avinashkoulavkar)
 - [jcs](https://github.com/jcs)
 - [aardvarkk](https://github.com/aardvarkk)
-
-## Copyright
-
-Copyright (c) 2016-2018 James Hu. See [LICENSE](LICENSE) for
-further details.
