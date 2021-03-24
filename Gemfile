@@ -1,8 +1,6 @@
 source "http://rubygems.org"
 
 gem 'actionpack'
-gem 'rack'
-gem 'rack-proxy'
 gem 'addressable'
 
 # Add dependencies to develop your gem here.

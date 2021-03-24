@@ -43,8 +43,6 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<actionpack>.freeze, [">= 0"])
-      s.add_runtime_dependency(%q<rack>.freeze, [">= 0"])
-      s.add_runtime_dependency(%q<rack-proxy>.freeze, [">= 0"])
       s.add_runtime_dependency(%q<addressable>.freeze, [">= 0"])
       s.add_development_dependency(%q<shoulda>.freeze, [">= 0"])
       s.add_development_dependency(%q<rdoc>.freeze, ["~> 3.12"])
@@ -53,8 +51,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
     else
       s.add_dependency(%q<actionpack>.freeze, [">= 0"])
-      s.add_dependency(%q<rack>.freeze, [">= 0"])
-      s.add_dependency(%q<rack-proxy>.freeze, [">= 0"])
       s.add_dependency(%q<addressable>.freeze, [">= 0"])
       s.add_dependency(%q<shoulda>.freeze, [">= 0"])
       s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
@@ -64,8 +60,6 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<actionpack>.freeze, [">= 0"])
-    s.add_dependency(%q<rack>.freeze, [">= 0"])
-    s.add_dependency(%q<rack-proxy>.freeze, [">= 0"])
     s.add_dependency(%q<addressable>.freeze, [">= 0"])
     s.add_dependency(%q<shoulda>.freeze, [">= 0"])
     s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
