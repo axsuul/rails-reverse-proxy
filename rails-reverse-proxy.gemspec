@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/axsuul/rails-reverse-proxy".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "2.5.2".freeze
+  s.rubygems_version = "3.0.3".freeze
   s.summary = "Reverse proxy for Ruby on Rails".freeze
 
   if s.respond_to? :specification_version then
@@ -68,3 +68,4 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov>.freeze, [">= 0"])
   end
 end
+
