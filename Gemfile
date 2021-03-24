@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'rails'
+gem 'actionpack'
 gem 'rack'
 gem 'rack-proxy'
 gem 'addressable'
