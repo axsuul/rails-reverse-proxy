@@ -75,6 +75,12 @@ If you'd like to customize options passed into the underlying [`Net:HTTP`](https
 reverse_proxy "http://localhost:8000", http: { read_timeout: 20, open_timeout: 100 }
 ```
 
+If you'd like to reset the `Accept-Encoding` header in order to disable compression or other server-side encodings
+
+```ruby
+reverse_proxy "http://localhost:8000", reset_accept_encoding: true
+```
+
 Determine what version you're using
 
 ```ruby
@@ -91,10 +97,11 @@ All pull requests will become first class citizens.
 
 Special thanks to our contributors! 
 
+- [aardvarkk](https://github.com/aardvarkk)
+- [avinashkoulavkar](https://github.com/avinashkoulavkar)
+- [bapirex](https://github.com/bapirex)
+- [jcs](https://github.com/jcs)
+- [kylewlacy](https://github.com/kylewlacy)
+- [marcosbeirigo](https://github.com/marcosbeirigo)
 - [mediafinger](https://github.com/mediafinger)
 - [miyukki](https://github.com/miyukki)
-- [bapirex](https://github.com/bapirex)
-- [marcosbeirigo](https://github.com/marcosbeirigo)
-- [avinashkoulavkar](https://github.com/avinashkoulavkar)
-- [jcs](https://github.com/jcs)
-- [aardvarkk](https://github.com/aardvarkk)
