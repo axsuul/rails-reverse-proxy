@@ -37,12 +37,13 @@ module ReverseProxy
 
     def request(env, options = {}, &block)
       options.reverse_merge!(
-        headers:    {},
-        http:       {},
-        path:       nil,
-        username:   nil,
-        password:   nil,
-        verify_ssl: true
+        headers:               {},
+        http:                  {},
+        path:                  nil,
+        username:              nil,
+        password:              nil,
+        verify_ssl:            true,
+        reset_accept_encoding: false
       )
 
       source_request = Rack::Request.new(env)
@@ -50,13 +51,11 @@ module ReverseProxy
       # We can pass in a custom path
       uri = Addressable::URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
 
-      # Initialize request
-      target_request = Net::HTTP.const_get(source_request.request_method.capitalize).new(uri.request_uri)
-
-      # Setup headers
+      # Define headers
       target_request_headers = extract_http_request_headers(source_request.env).merge(options[:headers])
 
-      target_request.initialize_http_header(target_request_headers)
+      # Initialize request
+      target_request = Net::HTTP.const_get(source_request.request_method.capitalize).new(uri.request_uri, target_request_headers)
 
       # Basic auth
       target_request.basic_auth(options[:username], options[:password]) if options[:username] and options[:password]
@@ -74,11 +73,11 @@ module ReverseProxy
       # Hold the response here
       target_response = nil
 
-      # Don't encode response/support compression which was
-      # causing content length not match the actual content
-      # length of the response which ended up causing issues
-      # within Varnish (503)
-      target_request['Accept-Encoding'] = nil
+      if options[:reset_accept_encoding]
+        # Clear the "Accept-Encoding" header (which will
+        # disable compression or other server-side encodings)
+        target_request['Accept-Encoding'] = nil
+      end
 
       http_options = {}
       http_options[:use_ssl] = (uri.scheme == "https")
