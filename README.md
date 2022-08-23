@@ -15,7 +15,7 @@ gem 'rails-reverse-proxy'
 Then (you guessed it!)
 
 ```
-$ bundle
+$ bundle install
 ```
 
 ## Usage
