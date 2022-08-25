@@ -86,7 +86,7 @@ module ReverseProxy
 
       # Make the request
       Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
-        callbacks[:on_connect].call(http)
+        callbacks[:on_connect].call(http, target_request)
         target_response = http.request(target_request)
       end
 
