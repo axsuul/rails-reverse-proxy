@@ -55,7 +55,7 @@ GEM
       semver2
     json (1.8.6)
     jwt (2.3.0)
-    loofah (2.13.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mime-types (2.99.3)
@@ -75,7 +75,7 @@ GEM
       rack (>= 1.2, < 3)
     psych (4.0.3)
       stringio
-    racc (1.6.0)
+    racc (1.6.1)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
