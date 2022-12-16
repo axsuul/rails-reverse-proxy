@@ -3,16 +3,17 @@ require 'addressable/uri'
 
 module ReverseProxy
   class Client
-    @@callback_methods = [
-      :on_response,
-      :on_set_cookies,
-      :on_connect,
-      :on_success,
-      :on_redirect,
-      :on_missing,
-      :on_error,
-      :on_complete
-    ]
+    @@callback_methods = {
+      on_response: nil,
+      on_set_cookies: nil,
+      before_connect: true,
+      on_connect: nil,
+      on_success: nil,
+      on_redirect: nil,
+      on_missing: nil,
+      on_error: nil,
+      on_complete: nil,
+    }
 
     # Define callback setters
     @@callback_methods.each do |method|
@@ -28,8 +29,8 @@ module ReverseProxy
       self.callbacks = {}
 
       # Initialize default callbacks with empty Proc
-      @@callback_methods.each do |method|
-        self.callbacks[method] = Proc.new {}
+      @@callback_methods.each do |method, default_return|
+        self.callbacks[method] = Proc.new { return default_return }
       end
 
       yield(self) if block_given?
@@ -83,6 +84,8 @@ module ReverseProxy
       http_options[:use_ssl] = (uri.scheme == "https")
       http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE unless options[:verify_ssl]
       http_options.merge!(options[:http]) if options[:http]
+
+      return unless callbacks[:before_connect].call(target_request)
 
       # Make the request
       Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
