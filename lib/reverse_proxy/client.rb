@@ -85,7 +85,7 @@ module ReverseProxy
       http_options.merge!(options[:http]) if options[:http]
 
       # Make the request
-      Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
+      Net::HTTP.start(uri.hostname, uri.port || uri.default_port, http_options) do |http|
         callbacks[:on_connect].call(http)
         target_response = http.request(target_request)
       end
