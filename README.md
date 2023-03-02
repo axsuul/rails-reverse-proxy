@@ -98,6 +98,7 @@ All pull requests will become first class citizens.
 Special thanks to our contributors! 
 
 - [aardvarkk](https://github.com/aardvarkk)
+- [Arjeno](https://github.com/Arjeno)
 - [avinashkoulavkar](https://github.com/avinashkoulavkar)
 - [bapirex](https://github.com/bapirex)
 - [jcs](https://github.com/jcs)
