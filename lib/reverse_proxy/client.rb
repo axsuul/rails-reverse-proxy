@@ -65,9 +65,9 @@ module ReverseProxy
          && source_request.body
         source_request.body.rewind
         target_request.body_stream = source_request.body
+        target_request.content_length = source_request.content_length || 0
       end
 
-      target_request.content_length = source_request.content_length || 0
       target_request.content_type   = source_request.content_type if source_request.content_type
 
       # Hold the response here
