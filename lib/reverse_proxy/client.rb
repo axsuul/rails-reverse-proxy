@@ -49,7 +49,7 @@ module ReverseProxy
       source_request = Rack::Request.new(env)
 
       # We can pass in a custom path
-      uri = Addressable::URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
+      uri = URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
 
       # Define headers
       target_request_headers = extract_http_request_headers(source_request.env).merge(options[:headers])
@@ -79,13 +79,13 @@ module ReverseProxy
         target_request['Accept-Encoding'] = nil
       end
 
-      # Make the request
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = (uri.scheme == "https")
-      http[:verify_mode] = OpenSSL::SSL::VERIFY_NONE unless options[:verify_ssl]
-      http.merge!(options[:http]) if options[:http]
+      http_options = {}
+      http_options[:use_ssl] = (uri.scheme == "https")
+      http_options[:verify_mode] = OpenSSL::SSL::VERIFY_NONE unless options[:verify_ssl]
+      http_options.merge!(options[:http]) if options[:http]
 
-      http.start do |http|
+      # Make the request
+      Net::HTTP.start(uri.hostname, uri.port, http_options) do |http|
         callbacks[:on_connect].call(http)
         target_response = http.request(target_request)
       end
