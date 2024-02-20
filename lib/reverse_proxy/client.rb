@@ -3,6 +3,15 @@ require 'addressable/uri'
 
 module ReverseProxy
   class Client
+    RackHeaders =
+      if Rack.const_defined?('Headers')
+        # Rack >= 3.0.0
+        Rack::Headers
+      else
+        # Rack < 3.0.0
+        Rack::Utils::HeaderHash
+      end
+
     @@callback_methods = [
       :on_response,
       :on_set_cookies,
@@ -132,7 +141,7 @@ module ReverseProxy
         !(/^HTTP_[A-Z_]+$/ === k) || k == "HTTP_VERSION" || v.nil?
       end.map do |k, v|
         [reconstruct_header_name(k), v]
-      end.inject(Rack::Utils::HeaderHash.new) do |hash, k_v|
+      end.inject(RackHeaders.new) do |hash, k_v|
         k, v = k_v
         hash[k] = v
         hash
