@@ -1,8 +1,8 @@
-## Unreleased
+## 0.13.0
 
-ADDED:
+BUG FIXES:
 
-* **Rack 3 compatibility:** Use `Rack::Headers` if defined (i.e. if using Rack >= 3.0.0), otherwise use `Rack::Utils::HeaderHash`
+* **Rack 3 compatibility:** Use `Rack::Headers` if defined (i.e. if using Rack >= 3.0.0), otherwise use `Rack::Utils::HeaderHash` [[#76](https://github.com/axsuul/rails-reverse-proxy/pull/76), [davidrunger](https://github.com/davidrunger)]
 
 ## 0.11.0
 

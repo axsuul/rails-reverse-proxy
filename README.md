@@ -101,6 +101,7 @@ Special thanks to our contributors!
 - [Arjeno](https://github.com/Arjeno)
 - [avinashkoulavkar](https://github.com/avinashkoulavkar)
 - [bapirex](https://github.com/bapirex)
+- [davidrunger](https://github.com/davidrunger)
 - [jcs](https://github.com/jcs)
 - [kylewlacy](https://github.com/kylewlacy)
 - [marcosbeirigo](https://github.com/marcosbeirigo)
