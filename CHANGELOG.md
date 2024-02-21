@@ -1,3 +1,9 @@
+## Unreleased
+
+ADDED:
+
+* **Rack 3 compatibility:** Use `Rack::Headers` if defined (i.e. if using Rack >= 3.0.0), otherwise use `Rack::Utils::HeaderHash`
+
 ## 0.11.0
 
 BUG FIXES:
